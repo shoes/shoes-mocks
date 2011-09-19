@@ -35,9 +35,22 @@ class Shoes
 
   class Paragraph
     attr_accessor :text
-    def initialize(text, &blk)
+    def initialize(text)
       self.text = text
     end
+  end
+
+  class Link
+    attr_accessor :text
+    attr_accessor :options
+    attr_accessor :block
+
+    def initialize(text, opt={}, &blk)
+      self.text = text
+      self.options = opt
+      self.block = blk
+    end
+
   end
 
   attr_accessor :elements
@@ -60,6 +73,10 @@ class Shoes
 
   def para(text)
     self.elements << Paragraph.new(text)
+  end
+
+  def link(text, opt={}, &blk)
+    self.elements << Link.new(text, opt, &blk)
   end
 
 end
