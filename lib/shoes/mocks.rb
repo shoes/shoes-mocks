@@ -33,6 +33,13 @@ class Shoes
     end
   end
 
+  class Paragraph
+    attr_accessor :text
+    def initialize(text, &blk)
+      self.text = text
+    end
+  end
+
   attr_accessor :elements
 
   def initialize
@@ -49,6 +56,10 @@ class Shoes
 
   def button(name, &blk)
     self.elements << Button.new(name, &blk)
+  end
+
+  def para(text)
+    self.elements << Paragraph.new(text)
   end
 
 end
