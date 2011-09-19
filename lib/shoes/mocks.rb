@@ -26,9 +26,9 @@ class Shoes
   # the C code. I'm not sure if there's a good distinction...
 
   class Button
-    attr_accessor :name
-    def initialize(name, &blk)
-      self.name = name
+    attr_accessor :text
+    def initialize(text, &blk)
+      self.text = text
       instance_eval &blk if block_given?
     end
   end
