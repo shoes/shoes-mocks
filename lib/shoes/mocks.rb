@@ -41,6 +41,7 @@ class Shoes
   end
 
   class Link
+
     attr_accessor :text
     attr_accessor :options
     attr_accessor :block
@@ -52,6 +53,14 @@ class Shoes
     end
 
   end
+
+  class Alert
+    attr_accessor :text
+    def initialize(text)
+      self.text = text
+    end
+  end
+
 
   attr_accessor :elements
 
@@ -77,7 +86,6 @@ class Shoes
 
   def button(name, &blk)
     self.elements << Button.new(name, &blk)
-    puts "I got called with #{name}"
   end
 
   def para(text)
@@ -86,6 +94,10 @@ class Shoes
 
   def link(text, opt={}, &blk)
     self.elements << Link.new(text, opt, &blk)
+  end
+
+  def alert(text)
+    self.elements << Alert.new(text)
   end
 
 end
