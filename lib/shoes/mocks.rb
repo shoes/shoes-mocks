@@ -55,12 +55,20 @@ class Shoes
 
   attr_accessor :elements
 
-  def initialize
+  def initialize(&block)
     self.elements = []
+    instance_eval(&block) if block_given?
   end
 
-  def self.app
-    new
+  def self.app(&block)
+    @application = new(&block)
+  end
+
+  # get the application that was most recently initilized with shoes
+  # unfortunately this won't work with multiple Shoes.apps in a program,
+  # however how common is this?
+  def self.application
+    @application
   end
 
   def append(&blk)
@@ -69,6 +77,7 @@ class Shoes
 
   def button(name, &blk)
     self.elements << Button.new(name, &blk)
+    puts "I got called with #{name}"
   end
 
   def para(text)
