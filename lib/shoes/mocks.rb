@@ -25,42 +25,29 @@ class Shoes
   # bootstrapped, all the ones below are ones I'm mocking out from
   # the C code. I'm not sure if there's a good distinction...
 
-  class Button
-    attr_accessor :text
-    def initialize(text, &blk)
-      self.text = text
-      instance_eval &blk if block_given?
-    end
-  end
-
-  class Paragraph
+  # All elements that display a text
+  class TextElement
     attr_accessor :text
     def initialize(text)
       self.text = text
     end
   end
 
-  class Link
-
-    attr_accessor :text
-    attr_accessor :options
+  # quite an inheritance chain... someone told me inheritance is bad :<
+  # But it felt like so much duplication
+  class TextBlockElement < TextElement
     attr_accessor :block
-
-    def initialize(text, opt={}, &blk)
-      self.text = text
-      self.options = opt
+    def initialize(text, &blk)
+      super(text)
       self.block = blk
     end
-
   end
 
-  class Alert
-    attr_accessor :text
-    def initialize(text)
-      self.text = text
-    end
-  end
+  class Alert < TextElement; end
+  class Paragraph < TextElement; end
 
+  class Link < TextBlockElement; end
+  class Button < TextBlockElement; end
 
   attr_accessor :elements
 
@@ -92,8 +79,8 @@ class Shoes
     self.elements << Paragraph.new(text)
   end
 
-  def link(text, opt={}, &blk)
-    self.elements << Link.new(text, opt, &blk)
+  def link(text, &blk)
+    self.elements << Link.new(text, &blk)
   end
 
   def alert(text)
