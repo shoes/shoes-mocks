@@ -9,8 +9,12 @@ class Shoes
 
   attr_accessor :elements
 
+  # for alerts and other things (for now)
+  attr_accessor :events
+
   def initialize(&block)
     self.elements = []
+    self.events = []
     instance_eval(&block) if block_given?
   end
 
@@ -30,7 +34,7 @@ class Shoes
   end
 
   def button(name, &blk)
-    self.elements << Button.new(name, &blk)
+    self.elements << Button.new(self, name, &blk)
   end
 
   def para(text)
@@ -38,11 +42,11 @@ class Shoes
   end
 
   def link(text, &blk)
-    self.elements << Link.new(text, &blk)
+    self.elements << Link.new(self, text, &blk)
   end
 
   def alert(text)
-    self.elements << Alert.new(text)
+    self.events << Alert.new(text)
   end
 
 end
