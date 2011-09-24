@@ -4,7 +4,7 @@ require "shoes/mocks/version"
 
 Gem::Specification.new do |s|
   s.name        = "shoes-mocks"
-  s.version     = ShoesMocks::VERSION
+  s.version     = Shoes::Mocks::VERSION
   s.authors     = ["Steve Klabnik"]
   s.email       = ["steve@steveklabnik.com"]
   s.homepage    = "http://github.com/shoes/shoes-mocks"

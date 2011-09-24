@@ -1,4 +1,6 @@
-module ShoesMocks
-  VERSION = "0.0.3"
+module Shoes
+  module Mocks
+    VERSION = "0.0.3"
+  end
 end
 
