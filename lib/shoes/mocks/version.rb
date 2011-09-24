@@ -1,4 +1,4 @@
-module Shoes
+class Shoes
   module Mocks
     VERSION = "0.0.3"
   end
