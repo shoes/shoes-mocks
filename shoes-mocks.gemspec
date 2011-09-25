@@ -5,8 +5,8 @@ require "shoes/mocks/version"
 Gem::Specification.new do |s|
   s.name        = "shoes-mocks"
   s.version     = Shoes::Mocks::VERSION
-  s.authors     = ["Steve Klabnik"]
-  s.email       = ["steve@steveklabnik.com"]
+  s.authors     = ["Steve Klabnik", "Tobias Pfeiffer"]
+  s.email       = ["steve@steveklabnik.com", "tobias.pfeiffer@student.hpi.uni-potsdam.de"]
   s.homepage    = "http://github.com/shoes/shoes-mocks"
   s.summary     = %q{Mocking for Shoes}
   s.description = %q{If you want your tests to be isolated, you need mocks. Mocking GUIs is hard. shoes-mocks to the rescue!}
