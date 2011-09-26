@@ -1,7 +1,3 @@
-require "shoes/mocks/version"
+require_relative "mocks/version"
+require_relative "mocks/shoes"
 
-module Shoes
-  module Mocks
-    # Your code goes here...
-  end
-end
